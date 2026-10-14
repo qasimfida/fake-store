@@ -43,6 +43,8 @@ export default defineConfig({
 			name: "Syne",
 			cssVariable: "--font-landing-display",
 			weights: [500, 600, 700],
+			styles: ["normal"],
+			subsets: ["latin"],
 			fallbacks: ["sans-serif"],
 		},
 		{
@@ -50,6 +52,8 @@ export default defineConfig({
 			name: "Figtree",
 			cssVariable: "--font-landing-body",
 			weights: [400, 500, 600],
+			styles: ["normal"],
+			subsets: ["latin"],
 			fallbacks: ["sans-serif"],
 		},
 	],
