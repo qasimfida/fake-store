@@ -5,9 +5,9 @@ A functioning fake store powered by [Fake Store API](https://fakestoreapi.com/),
 ## Stack
 
 - **Astro** — pages and server rendering
-- **React** — interactive cart UI
+- **React** — cart, auth, and checkout UI
 - **EmDash** — CMS for the blog (`/_emdash/admin`)
-- **Fake Store API** — products, categories, and ratings
+- **Fake Store API** — products, auth (`/auth/login`), users, carts
 
 ## Routes
 
@@ -17,9 +17,17 @@ A functioning fake store powered by [Fake Store API](https://fakestoreapi.com/),
 | Store | `/store` |
 | Product | `/store/:id` |
 | Cart | `/store/cart` |
+| Checkout | `/store/checkout` |
 | Blog posts | `/posts` |
 | Search | `/search` |
 | Admin | `/_emdash/admin` |
+
+## Checkout
+
+1. Add items to the cart.
+2. Open `/store/checkout` and sign in with FakeStoreAPI (`johnd` / `m38rmF$`).
+3. Confirm the shipping form (prefilled from `GET /users/:id`).
+4. Place order via `POST /carts`.
 
 ## Setup
 

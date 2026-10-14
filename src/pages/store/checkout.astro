@@ -1,0 +1,17 @@
+---
+import Base from "../../layouts/Base.astro";
+import CheckoutView from "../../components/store/CheckoutView";
+import "../../styles/store.css";
+---
+
+<Base title="Checkout" description="Sign in and complete your Fake Store order.">
+	<section class="store-page">
+		<div class="store-header">
+			<div>
+				<h1>Checkout</h1>
+				<p>Sign in with FakeStoreAPI, confirm shipping, place the order.</p>
+			</div>
+		</div>
+		<CheckoutView client:load />
+	</section>
+</Base>
