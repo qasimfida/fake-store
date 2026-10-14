@@ -1,0 +1,48 @@
+---
+import Base from "../../layouts/Base.astro";
+import AddToCartButton from "../../components/store/AddToCartButton";
+import { formatPrice, getProduct } from "../../lib/fakestore";
+import "../../styles/store.css";
+
+const id = Number(Astro.params.id);
+if (!Number.isInteger(id) || id < 1) {
+	return Astro.rewrite("/404");
+}
+
+let product;
+try {
+	product = await getProduct(id);
+} catch {
+	return Astro.rewrite("/404");
+}
+---
+
+<Base title={product.title} description={product.description}>
+	<section class="store-page">
+		<article class="product-detail">
+			<div class="product-detail-image">
+				<img src={product.image} alt={product.title} />
+			</div>
+			<div class="product-detail-info">
+				<p class="product-detail-category">
+					<a href={`/store?category=${encodeURIComponent(product.category)}`}>
+						{product.category}
+					</a>
+				</p>
+				<h1>{product.title}</h1>
+				<p class="product-detail-price">{formatPrice(product.price)}</p>
+				<p class="product-detail-rating">
+					★ {product.rating.rate} · {product.rating.count} reviews
+				</p>
+				<p class="product-detail-description">{product.description}</p>
+				<AddToCartButton
+					client:load
+					id={product.id}
+					title={product.title}
+					price={product.price}
+					image={product.image}
+				/>
+			</div>
+		</article>
+	</section>
+</Base>
