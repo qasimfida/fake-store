@@ -1,0 +1,14 @@
+body:has(.landing) {
+	background: #f3efe6;
+}
+
+body:has(.landing) .site-header,
+body:has(.landing) .site-footer {
+	background: color-mix(in srgb, #f3efe6 88%, transparent);
+	backdrop-filter: blur(8px);
+}
+
+body:has(.landing) .site-title,
+body:has(.landing) .nav-links a {
+	font-family: var(--font-landing-display), var(--font-body), sans-serif;
+}

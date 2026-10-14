@@ -13,7 +13,7 @@ A functioning fake store powered by [Fake Store API](https://fakestoreapi.com/),
 
 | Page | Route |
 |---|---|
-| Home (blog) | `/` |
+| Home (landing) | `/` |
 | Store | `/store` |
 | Product | `/store/:id` |
 | Cart | `/store/cart` |
