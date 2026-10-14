@@ -10,8 +10,10 @@ import { createPublicPageContext } from "emdash/page";
 import LiveSearch from "emdash/ui/search";
 import { Font } from "astro:assets";
 import { resolveBlogSiteIdentity } from "../utils/site-identity";
+import CartBadge from "../components/store/CartBadge";
 import "../styles/tokens.css";
 import "../styles/theme.css";
+import "../styles/store.css";
 
 interface Props {
 	title: string;
@@ -132,6 +134,9 @@ const isLoggedIn = !!Astro.locals.user;
 						collections={["posts", "pages"]}
 					/>
 					<div class="nav-links">
+						<a href="/store">Store</a>
+						<a href="/posts">Blog</a>
+						<CartBadge client:load />
 						{
 							menu?.items.map((item) => (
 								<a
@@ -183,6 +188,9 @@ const isLoggedIn = !!Astro.locals.user;
 					<div class="footer-nav">
 						<h2 class="footer-heading">Navigate</h2>
 						<ul class="footer-links">
+							<li><a href="/store">Store</a></li>
+							<li><a href="/posts">Blog</a></li>
+							<li><a href="/store/cart">Cart</a></li>
 							{
 								menu?.items.map((item) => (
 									<li>
