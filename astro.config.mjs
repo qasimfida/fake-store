@@ -38,6 +38,20 @@ export default defineConfig({
 			weights: [400, 500],
 			fallbacks: ["monospace"],
 		},
+		{
+			provider: fontProviders.google(),
+			name: "Syne",
+			cssVariable: "--font-landing-display",
+			weights: [500, 600, 700],
+			fallbacks: ["sans-serif"],
+		},
+		{
+			provider: fontProviders.google(),
+			name: "Figtree",
+			cssVariable: "--font-landing-body",
+			weights: [400, 500, 600],
+			fallbacks: ["sans-serif"],
+		},
 	],
 	devToolbar: { enabled: false },
 });
