@@ -1,0 +1,17 @@
+---
+import Base from "../../layouts/Base.astro";
+import CartView from "../../components/store/CartView";
+import "../../styles/store.css";
+---
+
+<Base title="Cart" description="Your shopping cart.">
+	<section class="store-page">
+		<div class="store-header">
+			<div>
+				<h1>Cart</h1>
+				<p>Review items before checkout.</p>
+			</div>
+		</div>
+		<CartView client:load />
+	</section>
+</Base>

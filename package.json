@@ -1,10 +1,10 @@
 {
-  "name": "testtask",
-  "version": "0.0.3",
+  "name": "fake-store",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "emdash": {
-    "label": "Blog",
+    "label": "Fake Store",
     "seed": "seed/seed.json"
   },
   "scripts": {

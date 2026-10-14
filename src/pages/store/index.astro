@@ -1,0 +1,83 @@
+---
+import Base from "../../layouts/Base.astro";
+import {
+	formatPrice,
+	getCategories,
+	getProducts,
+	getProductsByCategory,
+	type Product,
+} from "../../lib/fakestore";
+import "../../styles/store.css";
+
+const category = Astro.url.searchParams.get("category");
+
+let products: Product[] = [];
+let categories: string[] = [];
+let error: string | null = null;
+
+try {
+	[products, categories] = await Promise.all([
+		category ? getProductsByCategory(category) : getProducts(),
+		getCategories(),
+	]);
+} catch (e) {
+	error = e instanceof Error ? e.message : "Failed to load products";
+}
+---
+
+<Base
+	title={category ? `${category} — Store` : "Store"}
+	description="Browse products from the Fake Store API."
+>
+	<section class="store-page">
+		<div class="store-header">
+			<div>
+				<h1>Store</h1>
+				<p>Products from fakestoreapi.com</p>
+			</div>
+			<nav class="store-filters" aria-label="Product categories">
+				<a
+					href="/store"
+					class="store-filter"
+					aria-current={!category ? "page" : undefined}
+				>
+					All
+				</a>
+				{
+					categories.map((cat) => (
+						<a
+							href={`/store?category=${encodeURIComponent(cat)}`}
+							class="store-filter"
+							aria-current={category === cat ? "page" : undefined}
+						>
+							{cat}
+						</a>
+					))
+				}
+			</nav>
+		</div>
+
+		{
+			error ? (
+				<p class="store-error">{error}</p>
+			) : (
+				<div class="product-grid">
+					{products.map((product) => (
+						<a href={`/store/${product.id}`} class="product-card">
+							<div class="product-card-image">
+								<img src={product.image} alt={product.title} loading="lazy" />
+							</div>
+							<h2>{product.title}</h2>
+							<div class="product-card-meta">
+								<span class="price">{formatPrice(product.price)}</span>
+								<span>
+									★ {product.rating.rate} ({product.rating.count})
+								</span>
+							</div>
+						</a>
+					))}
+				</div>
+			)
+		}
+	</section>
+</Base>
