@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import {
 	cartTotal,
-	clearCart,
 	readCart,
 	removeFromCart,
 	updateQuantity,
@@ -82,17 +81,9 @@ export default function CartView() {
 				<p className="cart-total">
 					Total <strong>{formatPrice(total)}</strong>
 				</p>
-				<button
-					type="button"
-					className="store-btn"
-					onClick={() => {
-						clearCart();
-						setItems([]);
-						alert("Checkout complete (demo). Cart cleared.");
-					}}
-				>
+				<a href="/store/checkout" className="store-btn">
 					Checkout
-				</button>
+				</a>
 			</div>
 		</div>
 	);
